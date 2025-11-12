@@ -11,4 +11,13 @@ export const Menu = {
   제로콜라: { price: 3000, type: "음료" },
   레드와인: { price: 60000, type: "음료" },
   샴페인: { price: 25000, type: "음료" },
+
+  findMenuByName(name) {
+    const menu = Menu[name];
+
+    if (!menu) {
+      throw new Error("[ERROR] 존재하지 않는 메뉴입니다. 다시 입력해 주세요.");
+    }
+    return menu;
+  },
 };

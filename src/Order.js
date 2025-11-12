@@ -1,3 +1,5 @@
+import { Menu } from "./Menu.js";
+
 export default class Order {
   constructor(name, quantity) {
     this.name = name;
@@ -10,5 +12,10 @@ export default class Order {
 
   getQuantity() {
     return this.quantity;
+  }
+
+  getTotalPrice() {
+    const menu = Menu.findMenuByName(this.name);
+    return menu.price * this.quantity;
   }
 }
