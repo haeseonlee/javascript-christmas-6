@@ -1,5 +1,5 @@
-class VisitDate {
-  constructor(visitDay) {
-    this.vsitDate = new Date(2023, 11, visitDay);
+class VisitDay {
+  constructor(visitDate) {
+    this.visitDay = new Date(2023, 11, visitDate);
   }
 }
