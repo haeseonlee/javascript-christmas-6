@@ -11,3 +11,5 @@ class VisitDay {
     return this.visitDay.getDay();
   }
 }
+
+export default VisitDay;
