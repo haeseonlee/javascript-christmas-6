@@ -6,4 +6,8 @@ class VisitDay {
   getVisitDate() {
     return this.visitDay.getDate();
   }
+
+  getDayOfWeek() {
+    return this.visitDay.getDay();
+  }
 }
