@@ -1,6 +1,17 @@
 import { Menu } from "./Menu.js";
 
 export const WeekDiscount = {
+  applyWeekDiscount(visitDate, orders) {
+    const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
+    const day = visitDate.getDayOfWeek();
+    const dayOfWeek = weekDays[day];
+
+    if (dayOfWeek === "금" || dayOfWeek === "토") {
+      return this.calculateWeekend(orders);
+    }
+    return this.calculateWeekDay(orders);
+  },
+
   calculateWeekend(orders) {
     let menuCount = 0;
     for (let order of orders) {
