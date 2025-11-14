@@ -15,7 +15,7 @@ export const WeekDiscount = {
   calculateWeekend(orders) {
     let menuCount = 0;
     for (let order of orders) {
-      const menu = Menu.findMenuByName(order.getName());
+      const menu = findMenuByName(order.getName());
       if (menu.type === "메인") {
         const quantity = order.getQuantity();
         menuCount += quantity;
