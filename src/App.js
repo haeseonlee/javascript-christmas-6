@@ -7,8 +7,8 @@ import VisitDate from "./VisitDate.js";
 class App {
   async run() {
     OutputView.printWelcomeMessage();
-    const visitDayStr = await InputView.readDate();
-    const visitDay = Number(visitDayStr);
+
+    const visitDay = await this.readValidatedDate();
     const visitDate = new VisitDate(visitDay);
 
     const orderMenusStr = await InputView.readMenus();
@@ -24,6 +24,25 @@ class App {
     OutputView.printTotalBenefitAmount(payment);
     OutputView.printAfterDiscountAmount(payment);
     OutputView.printBadge(payment);
+  }
+
+  async readValidatedDate() {
+    while (true) {
+      try {
+        const visitDayStr = await InputView.readDate();
+        const visitDay = Number(visitDayStr);
+
+        if (isNaN(visitDay) || visitDay < 1 || visitDay > 31) {
+          throw new Error(
+            "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요."
+          );
+        }
+
+        return visitDay;
+      } catch (error) {
+        OutputView.printError(error.message);
+      }
+    }
   }
 }
 
