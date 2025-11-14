@@ -44,9 +44,14 @@ const OutputView = {
       Console.print("없음\n");
       return;
     }
-    Console.print(
-      `크리스마스 디데이 할인 : -${payment.getDDayAmount().toLocaleString()}원`
-    );
+    if (payment.getDDayAmount() > 0) {
+      Console.print(
+        `크리스마스 디데이 할인 : -${payment
+          .getDDayAmount()
+          .toLocaleString()}원`
+      );
+    }
+
     if (visitDate.getDayOfWeek() === 5 || visitDate.getDayOfWeek() === 6) {
       Console.print(
         `주말 할인 : -${payment.getWeekAmount().toLocaleString()}원`
@@ -56,12 +61,18 @@ const OutputView = {
         `평일 할인 : -${payment.getWeekAmount().toLocaleString()}원`
       );
     }
-    Console.print(
-      `특별 할인: -${payment.getSpecialAmount().toLocaleString()}원`
-    );
-    Console.print(
-      `증정 이벤트 : -${payment.getGiftAmount().toLocaleString()}원`
-    );
+
+    if (payment.getSpecialAmount() > 0) {
+      Console.print(
+        `특별 할인: -${payment.getSpecialAmount().toLocaleString()}원`
+      );
+    }
+
+    if (payment.getGiftAmount() > 0) {
+      Console.print(
+        `증정 이벤트 : -${payment.getGiftAmount().toLocaleString()}원`
+      );
+    }
   },
 
   printTotalBenefitAmount(payment) {
