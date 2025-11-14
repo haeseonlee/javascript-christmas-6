@@ -8,12 +8,11 @@ class App {
   async run() {
     OutputView.printWelcomeMessage();
     const visitDayStr = await InputView.readDate();
+    const visitDay = Number(visitDayStr);
+    const visitDate = new VisitDate(visitDay);
 
     const orderMenusStr = await InputView.readMenus();
     const orders = OrderParser.createOrder(orderMenusStr);
-
-    const visitDay = Number(visitDayStr);
-    const visitDate = new VisitDate(visitDay);
 
     OutputView.printVisitMessage(visitDay);
     OutputView.printMenu(orders);
