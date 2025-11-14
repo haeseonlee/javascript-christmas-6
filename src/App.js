@@ -1,6 +1,7 @@
 import InputView from "./InputView.js";
 import { OrderParser } from "./OrderParser.js";
 import OutputView from "./OutputView.js";
+import { PaymentCalculator } from "./PaymentCalculator.js";
 import VisitDate from "./VisitDate.js";
 
 class App {
@@ -12,8 +13,13 @@ class App {
     const orders = OrderParser.createOrder(orderMenusStr);
 
     const visitDay = Number(visitDayStr);
+    const visitDate = new VisitDate(visitDay);
+
     OutputView.printVisitMessage(visitDay);
     OutputView.printMenu(orders);
+
+    const payment = PaymentCalculator.calculate(visitDate, orders);
+    OutputView.printBeforeDiscount(payment);
   }
 }
 

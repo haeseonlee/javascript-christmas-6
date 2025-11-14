@@ -4,8 +4,8 @@ export const ChristmasDDay = {
     const endDate = new Date("2023-12-25");
 
     if (
-      visitDate.getTime() >= startDate.getTime() &&
-      visitDate.getTime() <= endDate.getTime()
+      visitDate.getVisitDate() >= startDate.getDate() &&
+      visitDate.getVisitDate() <= endDate.getDate()
     ) {
       return true;
     }
@@ -17,7 +17,7 @@ export const ChristmasDDay = {
       return 0;
     }
 
-    const visitDay = visitDate.getDate();
+    const visitDay = visitDate.getVisitDate();
     return 1000 + (visitDay - 1) * 100;
   },
 };
