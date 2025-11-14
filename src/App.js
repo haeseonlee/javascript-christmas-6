@@ -20,6 +20,11 @@ class App {
 
     const payment = PaymentCalculator.calculate(visitDate, orders);
     OutputView.printBeforeDiscount(payment);
+    OutputView.printGiftEvent(payment);
+    OutputView.printBenefitDetails(payment, visitDate);
+    OutputView.printTotalBenefitAmount(payment);
+    OutputView.printAfterDiscountAmount(payment);
+    OutputView.printBadge(payment);
   }
 }
 

@@ -45,24 +45,22 @@ const OutputView = {
       return;
     }
     Console.print(
-      `크리스마스 디데이 할인 : -${payment
-        .getDDayAmount()
-        .toLocaleString()}원\n`
+      `크리스마스 디데이 할인 : -${payment.getDDayAmount().toLocaleString()}원`
     );
     if (visitDate.getDayOfWeek() === 5 || visitDate.getDayOfWeek() === 6) {
       Console.print(
-        `주말 할인 : -${payment.getWeekAmount().toLocaleString()}원\n`
+        `주말 할인 : -${payment.getWeekAmount().toLocaleString()}원`
       );
     } else {
       Console.print(
-        `평일 할인 : -${payment.getWeekAmount().toLocaleString()}원\n`
+        `평일 할인 : -${payment.getWeekAmount().toLocaleString()}원`
       );
     }
     Console.print(
-      `특별 할인: -${payment.getSpecialAmount().toLocaleString()}원\n`
+      `특별 할인: -${payment.getSpecialAmount().toLocaleString()}원`
     );
     Console.print(
-      `증정 이벤트 : -${payment.getGiftAmount().toLocaleString()}원\n`
+      `증정 이벤트 : -${payment.getGiftAmount().toLocaleString()}원`
     );
   },
 
@@ -81,21 +79,19 @@ const OutputView = {
       payment.getBeforeAmount() -
       payment.getDDayAmount() -
       payment.getWeekAmount() -
-      payment.getSpecialAmount() -
-      payment.getGiftAmount();
+      payment.getSpecialAmount();
     Console.print("\n<할인 후 예상 결제 금액>");
     Console.print(`${discountAmount.toLocaleString()}원`);
   },
 
   printBadge(payment) {
-    const discountAmount =
-      payment.getBeforeAmount() -
-      payment.getDDayAmount() -
-      payment.getWeekAmount() -
-      payment.getSpecialAmount() -
+    const totalBenefit =
+      payment.getDDayAmount() +
+      payment.getWeekAmount() +
+      payment.getSpecialAmount() +
       payment.getGiftAmount();
     Console.print("\n<12월 이벤트 배지>");
-    Console.print(`${Badge.applyBadge(discountAmount)}`);
+    Console.print(`${Badge.applyBadge(totalBenefit)}`);
   },
 };
 
