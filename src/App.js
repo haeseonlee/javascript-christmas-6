@@ -11,8 +11,7 @@ class App {
     const visitDay = await this.readValidatedDate();
     const visitDate = new VisitDate(visitDay);
 
-    const orderMenusStr = await InputView.readMenus();
-    const orders = OrderParser.createOrder(orderMenusStr);
+    const orders = await this.readValidatedOrders();
 
     OutputView.printVisitMessage(visitDay);
     OutputView.printMenu(orders);
@@ -39,6 +38,18 @@ class App {
         }
 
         return visitDay;
+      } catch (error) {
+        OutputView.printError(error.message);
+      }
+    }
+  }
+
+  async readValidatedOrders() {
+    while (true) {
+      try {
+        const orderMenusStr = await InputView.readMenus();
+        const orders = OrderParser.createOrder(orderMenusStr);
+        return orders;
       } catch (error) {
         OutputView.printError(error.message);
       }
