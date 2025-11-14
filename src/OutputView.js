@@ -3,26 +3,25 @@ import { Badge } from "./Badge.js";
 
 const OutputView = {
   printWelcomeMessage() {
-    Console.print("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.\n");
+    Console.print("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
   },
 
   printVisitMessage(visitDay) {
     Console.print(
-      "12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n",
-      visitDay
+      `12월 ${visitDay}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n`
     );
   },
 
   printMenu(orders) {
     Console.print("\n<주문 메뉴>");
     for (let order of orders) {
-      Console.print("%s %d개\n", order.getName(), order.getQuantity());
+      Console.print(`${order.getName()} ${order.getQuantity()}개`);
     }
   },
 
   printBeforeDiscount(payment) {
     Console.print("\n<할인 전 총주문 금액>");
-    Console.print("%s원\n", payment.getBeforeAmount().toLocaleString());
+    Console.print(`${payment.getBeforeAmount().toLocaleString()}원\n`);
   },
 
   printGiftEvent(payment) {
