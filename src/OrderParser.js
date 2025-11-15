@@ -7,6 +7,7 @@ export const OrderParser = {
     }
 
     const orders = [];
+    const alreadyHasName = new Set();
 
     const menuAndQty = orderMenusStr.split(",").map((pair) => pair.trim());
 
@@ -27,6 +28,13 @@ export const OrderParser = {
           "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
         );
       }
+
+      if (alreadyHasName.has(name)) {
+        throw new Error(
+          "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
+        );
+      }
+      alreadyHasName.add(name);
 
       orders.push(new Order(name, quantity));
     });
