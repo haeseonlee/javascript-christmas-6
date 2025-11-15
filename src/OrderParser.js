@@ -1,3 +1,4 @@
+import { findMenuByName } from "./Menu.js";
 import Order from "./Order.js";
 
 export const OrderParser = {
@@ -36,8 +37,17 @@ export const OrderParser = {
       }
       alreadyHasName.add(name);
 
+      findMenuByName(name);
+
       orders.push(new Order(name, quantity));
     });
+
+    const isOrderOnlyDrinks = orders.every(
+      (order) => findMenuByName(order.name).type === "음료"
+    );
+    if (isOrderOnlyDrinks) {
+      throw new Error("[ERROR] 음료만 주문할 수 없습니다.");
+    }
     return orders;
   },
 };
