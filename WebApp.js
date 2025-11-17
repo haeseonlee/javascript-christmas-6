@@ -1,8 +1,8 @@
-import Order from "./Order.js";
-import { findMenuByName } from "./Menu.js";
-import VisitDate from "./VisitDate.js";
-import { PaymentCalculator } from "./PaymentCalculator.js";
-import { Badge } from "./Badge.js";
+import Order from "./src/Order.js";
+import { findMenuByName } from "./src/Menu.js";
+import VisitDate from "./src/VisitDate.js";
+import { PaymentCalculator } from "./src/PaymentCalculator.js";
+import { Badge } from "./src/Badge.js";
 
 export function run() {
   const step1 = document.getElementById("step-1-welcome");
