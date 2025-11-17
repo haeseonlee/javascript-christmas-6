@@ -1,3 +1,5 @@
-import App from "./App.js";
+//import App from "./App.js";
+import { run } from "./WebApp.js";
 
-new App().run();
+//new App().run();
+run();

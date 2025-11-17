@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>우테코 식당 이벤트 플래너</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+        text-align: center;
+        background: linear-gradient(135deg, #faf3e0, #f0e4d7);
+        font-family: "Pretendard", sans-serif;
+      }
+
+      button {
+        padding: 12px 22px;
+        border: none;
+        border-radius: 10px;
+        background-color: #2a7a2e;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px 0;
+      }
+
+      button:hover {
+        background-color: #246a28;
+      }
+
+      input,
+      select {
+        width: 250px;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        margin: 10px 0;
+        box-sizing: border-box;
+      }
+
+      #date-input-error,
+      #order-input-error {
+        color: red;
+        font-size: 14px;
+        margin: 5px 0 10px;
+      }
+
+      #step-2-date,
+      #step-3-order,
+      #result {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="planner-title">우테코 식당 이벤트 플래너</h1>
+    <div id="step-1-welcome">
+      <h3>안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.</h3>
+      <button id="reservation-btn">예약하기!</button>
+    </div>
+    <div id="step-2-date">
+      <h3>12월 중 식당 예상 방문 날짜는 언제인가요?</h3>
+      <input id="visit-date-input" placeholder="숫자만 입력해 주세요!" /><br />
+      <p id="date-input-error"></p>
+      <button id="visit-date-btn">다음</button>
+    </div>
+    <div id="step-3-order">
+      <h3>주문하실 메뉴를 메뉴와 개수를 알려 주세요.</h3>
+      <select id="select-order-input">
+        <option selected disabled>===선택===</option>
+        <optgroup label="애피타이저">
+          <option>양송이수프</option>
+          <option>타파스</option>
+          <option>시저샐러드</option>
+        </optgroup>
+        <optgroup label="메인">
+          <option>티본스테이크</option>
+          <option>바비큐립</option>
+          <option>해산물파스타</option>
+          <option>크리스마스파스타</option>
+        </optgroup>
+        <optgroup label="디저트">
+          <option>초코케이크</option>
+          <option>아이스크림</option>
+        </optgroup>
+        <optgroup label="음료">
+          <option>제로콜라</option>
+          <option>레드와인</option>
+          <option>샴페인</option>
+        </optgroup></select
+      ><br />
+      <input type="number" min="1" max="20" id="order-quantity-input" /><br />
+      <p id="order-input-error"></p>
+      <div id="selected-orders"></div>
+      <button id="select-order-btn">추가하기</button><br />
+      <button id="order-complete-btn">주문하기</button>
+    </div>
+    <div id="result">
+      <h3 id="visit-date-preview"></h3>
+      <div id="ordered-menus"></div>
+      <div id="before-discount-amount"></div>
+      <div id="gift-menu"></div>
+      <div id="benefit-details"></div>
+      <div id="total-benefit-amount"></div>
+      <div id="after-discount-amount"></div>
+      <div id="event-badge"></div>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
